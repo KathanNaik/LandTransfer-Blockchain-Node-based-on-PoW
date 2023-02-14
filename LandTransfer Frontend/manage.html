@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html ng-app="landApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="land.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>BlockChain</title>
+</head>
+<body ng-controller="landController as landList">
+  <div autocomplete='off' class='bar' style="margin-top: -20px!important;">
+    <h1>
+        Welcome to Land Transfer Portal!
+    </h1>
+    <h3>
+           Here you can register your properties and their transections that will get stored by Blockchain technology and Proof of Work algorithm. 
+    </h3>
+<a href="#property">
+    <button class='btn block-cube block-cube-hover' type='button'>
+      <span class='bg-top'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg-right'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg'>
+        <span class='bg-inner'></span>
+      </span>
+      <h3 class='text'>
+        View Property
+      </h3>
+    </button>
+</a>
+<a href="#register">
+    <button class='btn block-cube block-cube-hover' type='button'>
+      <span class='bg-top'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg-right'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg'>
+        <span class='bg-inner'></span>
+      </span>
+      <h3 class='text'>
+        Register Property
+      </h3>
+    </button>
+</a>
+<a href="#transfer">
+    <button class='btn block-cube block-cube-hover' type='button'>
+      <span class='bg-top'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg-right'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg'>
+        <span class='bg-inner'></span>
+      </span>
+      <h3 class='text'>
+        Transfer Property
+      </h3>
+    </button>
+</a>
+<a href="#transection">
+    <button class='btn block-cube block-cube-hover' type='button'>
+      <span class='bg-top'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg-right'>
+        <span class='bg-inner'></span>
+      </span>
+      <span class='bg'>
+        <span class='bg-inner'></span>
+      </span>
+      <h3 class='text'>
+         Property Transaction
+      </h3>
+    </button>
+</a>
+</div>
+<hr style="color: white; margin-left: 20px; margin-right:20px;  margin-bottom:-20px"> 
+  <form autocomplete='off' class='form' style="margin-top: -20px!important">
+    <div class='control'>
+      <h1 style="margin-bottom:25px!important">
+        My Profile!
+      </h1>
+    </div>
+    <div class='control block-cube block-input'>
+      <input name='username' placeholder='UserName' ng-model="landList.username" type='text' required>
+      <div class='bg-top'>
+        <div class='bg-inner'></div>
+      </div>
+      <div class='bg-right'>
+        <div class='bg-inner'></div>
+      </div>
+      <div class='bg'>
+        <div class='bg-inner'></div>
+      </div>
+    </div>
+      <div class='control block-cube block-input'>
+        <input name='password' placeholder='Password' ng-model="landList.password" type='password' required>
+        <div class='bg-top'>
+          <div class='bg-inner'></div>
+        </div>
+        <div class='bg-right'>
+          <div class='bg-inner'></div>
+        </div>
+        <div class='bg'>
+          <div class='bg-inner'></div>
+        </div>
+      </div>
+      <button class='btn block-cube block-cube-hover' type='button' style="width: 50%!important; margin-top:50px!important;" ng-click="landList.addUser()">
+        <div class='bg-top'>
+          <div class='bg-inner'></div>
+        </div>
+        <div class='bg-right'>
+          <div class='bg-inner'></div>
+        </div>
+        <div class='bg'>
+          <div class='bg-inner'></div>
+        </div>
+        <div class='text'>
+          Add User
+        </div>
+      </button>
+    </form>
+  <hr style="color: white; margin-left: 20px; margin-right:20px;  margin-bottom:-20px"> 
+  <div class="control form">
+    <h1>
+      Listed Properties
+    </h1>
+    <table id="property" ng-repeat="x in landList.lands | filter: {name: landList.username}">
+      <tr>
+        <th>owner</th>
+        <th>Place</th>
+        <th>Block Number</th>
+        <th>Area</th>
+      </tr>
+      <tr ng-repeat="y in x.hisland">
+          <td>{{x.name}}</td>
+          <td>{{y.address}}</td>
+          <td>{{y.blockno}}</td>
+          <td>{{y.area}}</td>
+      </tr>
+      <tr></tr>
+    </table>
+  </div>
+  <hr style="color: white; margin-left: 20px; margin-right:20px; margin-bottom:-20px"> 
+    <form  id="register" autocomplete='off' class='form'>
+        <div class='control'>
+          <h1 style="margin-bottom:25px!important">
+            Land Registration
+          </h1>
+        </div>
+        <div class='control block-cube block-input'>
+          <input name='address' placeholder='Address' ng-model="landList.address" type='text' required>
+          <div class='bg-top'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg-right'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg'>
+            <div class='bg-inner'></div>
+          </div>
+        </div>
+          <div class='control block-cube block-input'>
+            <input name='blockNumber' placeholder='Block Number' ng-model="landList.blockno" type='text' required>
+            <div class='bg-top'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg-right'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg'>
+              <div class='bg-inner'></div>
+            </div>
+          </div>
+          <div class='control block-cube block-input'>
+            <input name='area' placeholder='Area' ng-model="landList.area" type='text' required>
+            <div class='bg-top'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg-right'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg'>
+              <div class='bg-inner'></div>
+            </div>
+          </div>
+        <button class='btn block-cube block-cube-hover' type='button' style="width: 50%!important; margin-top:50px!important;" ng-click="landList.addLand()">
+          <div class='bg-top'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg-right'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='text'>
+            Register
+          </div>
+        </button>
+        <h3 ng-model="landList.err"></h3>
+      </form>
+      <hr style="color: white; margin-left: 20px; margin-right:20px; margin-bottom:-20px"> 
+      <form  id="transfer" autocomplete='off' class="form" method="post" action="/">
+        <div class='control'>
+          <h1 style="margin-bottom:25px!important">
+            Land Transfer
+          </h1>
+        </div>
+        <div class='control block-cube block-input'>
+          <input name='sellerName' placeholder='Seller Name' type='text' ng-model="landList.username" disabled>
+          <div class='bg-top'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg-right'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg'>
+            <div class='bg-inner'></div>
+          </div>
+        </div>
+        <div class='control block-cube block-input'>
+          <input name='buyerName' placeholder='Buyer Name' type='text'  ng-model="landList.buyer">
+          <div class='bg-top'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg-right'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg'>
+            <div class='bg-inner'></div>
+          </div>
+        </div>
+          <div class='control block-cube block-input'>
+            <input name='blockNumber' placeholder='Block Number' type='text'  ng-model="landList.blocknum">
+            <div class='bg-top'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg-right'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg'>
+              <div class='bg-inner'></div>
+            </div>
+          </div>
+          <div class='control block-cube block-input'>
+            <input name='price' placeholder='Price' type='text'  ng-model="landList.price">
+            <div class='bg-top'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg-right'>
+              <div class='bg-inner'></div>
+            </div>
+            <div class='bg'>
+              <div class='bg-inner'></div>
+            </div>
+          </div>
+       
+        <button class='btn block-cube block-cube-hover' type='button' style="width: 50%!important; margin-top:50px!important;" ng-click="landList.transferLand()">
+          <div class='bg-top'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg-right'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='text'>
+            Transfer
+          </div>
+        </button>
+      </form>
+      <hr style="color: white; margin-left: 20px; margin-right:20px; margin-bottom:-20px"> 
+      <div class='control form'>
+        <h1 style="margin-bottom:-100px!important">
+          Transaction
+        </h1>
+      </div>
+      <form  id="transection" autocomplete='off' class="form">
+        <div class='control block-cube block-input'>
+          <input name='Blockfilter' placeholder='Block Number' type='text' ng-model="landList.blockfilter">
+          <div class='bg-top'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg-right'>
+            <div class='bg-inner'></div>
+          </div>
+          <div class='bg'>
+            <div class='bg-inner'></div>
+          </div>
+        </div>
+      </form>
+
+      <ul>
+        <li  ng-repeat="t in landList.transections | filter: { blocknumber: landList.blockfilter}" style="margin: 10px 0px 10px 360px;">
+          seller: {{t.seller}}, blockno: {{t.blocknumber}} >>> buyer: {{t.buyer}}, price: {{t.price}}
+        </li>
+      </ul>
+      
+</body>
+</html>
